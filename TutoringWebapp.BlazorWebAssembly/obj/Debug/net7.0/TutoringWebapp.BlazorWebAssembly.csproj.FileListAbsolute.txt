@@ -865,9 +865,6 @@ D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\D
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\rt4oe99c70-tptq2av103.gz
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\v2s7jkw7yo-lfu7j35m59.gz
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\wrzm6i8uf9-7cxe8oq9xu.gz
-D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\0ncg7aa31w-83qp9yl4it.gz
-D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\drawypdj5s-z2mv6yko99.gz
-D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\abdqbns3dm-cdhtz16rah.gz
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\staticwebassets.build.json
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\staticwebassets.build.json.cache
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\staticwebassets.development.json
@@ -877,3 +874,6 @@ D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\D
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\refint\TutoringWebapp.BlazorWebAssembly.dll
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\TutoringWebapp.BlazorWebAssembly.pdb
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\ref\TutoringWebapp.BlazorWebAssembly.dll
+D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\0ncg7aa31w-wcxi9n1tgl.gz
+D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\drawypdj5s-yb29ld3emx.gz
+D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.BlazorWebAssembly\obj\Debug\net7.0\compressed\abdqbns3dm-2ncyqui1mz.gz

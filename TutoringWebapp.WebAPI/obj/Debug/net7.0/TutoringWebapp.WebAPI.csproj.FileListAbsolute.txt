@@ -28,7 +28,6 @@ D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\staticwebassets.build.json.cache
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\staticwebassets.development.json
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\staticwebassets.build.endpoints.json
-D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\Tutoring.DD001E94.Up2Date
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\TutoringWebapp.WebAPI.dll
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\refint\TutoringWebapp.WebAPI.dll
@@ -76,3 +75,4 @@ D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\bin\Debug\net7.0
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\bin\Debug\net7.0\TutoringWebapp.SharedKernel.dll
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\bin\Debug\net7.0\TutoringWebapp.Application.pdb
 D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\bin\Debug\net7.0\TutoringWebapp.SharedKernel.pdb
+D:\Studia\zaoczne\sem2\PAB\TutoringWebapp\TutoringWebapp.WebAPI\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt

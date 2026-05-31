@@ -1,7 +1,7 @@
 {
   "entryAssembly": "TutoringWebapp.BlazorWebAssembly",
   "resources": {
-    "hash": "sha256-Jr7Sz1wjlUrufi2M10hu8ai8tOmRjvsaeyhfhQLJRQ8=",
+    "hash": "sha256-xy6Ba35ic1019wW+8UDb/mEuUhyRxoo9xc34PB+SNPY=",
     "runtime": {
       "dotnet.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -214,10 +214,10 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "TutoringWebapp.BlazorWebAssembly.dll": "sha256-VBGuhy7vMAFTB7jW6x8M53vBpHA/jiYVHmcsCfCgUfU="
+      "TutoringWebapp.BlazorWebAssembly.dll": "sha256-YC6pfGNIlallZ2WEspg82Hnlej9GEKAkcN1veIRXY2A="
     },
     "pdb": {
-      "TutoringWebapp.BlazorWebAssembly.pdb": "sha256-i0+qd3UJS2VptL8ybwyRpQZ0dHsmh4VNHzKUuWLfkPs="
+      "TutoringWebapp.BlazorWebAssembly.pdb": "sha256-Dq2ZixWNqzcrOxEtqJrsO3MSD6f6wCdE2sjdVnB/TL0="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
