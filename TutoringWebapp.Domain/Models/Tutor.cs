@@ -9,6 +9,7 @@ namespace TutoringWebapp.Domain.Models
     public class Tutor : User
     {
         public string Bio { get; set; } = string.Empty;
+        public decimal HourlyRate { get; set; }
 
         public ICollection<Subject> TaughtSubjects { get; set; } = new List<Subject>();
         public ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();

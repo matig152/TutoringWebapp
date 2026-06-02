@@ -10,5 +10,6 @@ namespace TutoringWebapp.SharedKernel.Dto
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public EducationLevel EducationLevel { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

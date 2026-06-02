@@ -26,6 +26,13 @@ namespace TutoringWebapp.Application.Services
             var tutor = _mapper.Map<Tutor>(dto);
             tutor.Id = Guid.NewGuid();
             tutor.CreatedAt = DateTime.Now;
+
+            if (dto.SubjectIds != null && dto.SubjectIds.Any())
+            {
+                var allSubjects = _unitOfWork.SubjectRepository.GetAll();
+                tutor.TaughtSubjects = allSubjects.Where(s => dto.SubjectIds.Contains(s.Id)).ToList();
+            }
+
             _unitOfWork.TutorRepository.Insert(tutor);
             _unitOfWork.Commit();
             return tutor.Id;
@@ -34,15 +41,19 @@ namespace TutoringWebapp.Application.Services
         public List<TutorDto> GetAll()
         {
             var tutors = _unitOfWork.TutorRepository.GetAll();
-            List<TutorDto> result = _mapper.Map<List<TutorDto>>(tutors);
-            return result;
+            return _mapper.Map<List<TutorDto>>(tutors);
         }
 
         public TutorDto GetById(Guid id)
         {
             var tutors = _unitOfWork.TutorRepository.GetAll();
             var tutor = tutors.FirstOrDefault(t => t.Id == id);
-            return _mapper.Map<TutorDto>(tutor);
+            var dto = _mapper.Map<TutorDto>(tutor);
+            if (dto != null && dto.TaughtSubjects == null)
+            {
+                dto.TaughtSubjects = new List<SubjectDto>();
+            }
+            return dto;
         }
 
         public bool Update(Guid id, TutorDto dto)
@@ -56,8 +67,16 @@ namespace TutoringWebapp.Application.Services
             tutor.Email = dto.Email;
             tutor.PasswordHash = dto.PasswordHash;
             tutor.Bio = dto.Bio;
+            tutor.ImageUrl = dto.ImageUrl;
+            tutor.HourlyRate = dto.HourlyRate;
 
-            _unitOfWork.TutorRepository.Insert(tutor);
+            if (dto.TaughtSubjects != null)
+            {
+                var allSubjects = _unitOfWork.SubjectRepository.GetAll();
+                var subjectIds = dto.TaughtSubjects.Select(s => s.Id).ToList();
+                tutor.TaughtSubjects = allSubjects.Where(s => subjectIds.Contains(s.Id)).ToList();
+            }
+
             _unitOfWork.Commit();
             return true;
         }
