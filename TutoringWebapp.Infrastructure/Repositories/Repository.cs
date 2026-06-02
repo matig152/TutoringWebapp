@@ -22,7 +22,7 @@ namespace TutoringWebapp.Infrastructure.Repositories
             return _context.Set<TEntity>().Find(id);
         }
 
-        public IList<TEntity> GetAll()
+        public virtual IList<TEntity> GetAll()
         {
             return _context.Set<TEntity>()
                 .AsNoTracking()

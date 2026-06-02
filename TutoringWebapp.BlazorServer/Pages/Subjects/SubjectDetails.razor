@@ -1,0 +1,80 @@
+@page "/subjects/create"
+@page "/subjects/edit/{Id:int}"
+@inject ISubjectService SubjectService
+@inject NavigationManager NavigationManager
+
+<PageTitle>@Title</PageTitle>
+
+<div class="row mb-4">
+    <div class="col">
+        <h1>@Title</h1>
+    </div>
+</div>
+
+<RadzenCard>
+    <EditForm Model="@_subject" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <RadzenLabel Text="Name" />
+                <RadzenTextBox @bind-Value="_subject.Name" class="w-100" Name="Name" />
+                <ValidationMessage For="@(() => _subject.Name)" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <RadzenLabel Text="Description" />
+                <RadzenTextArea @bind-Value="_subject.Description" class="w-100" Rows="5" Name="Description" />
+                <ValidationMessage For="@(() => _subject.Description)" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-end">
+                <RadzenButton ButtonType="ButtonType.Submit" Text="Save" Icon="save" ButtonStyle="ButtonStyle.Primary" />
+                <RadzenButton Click=@(() => NavigationManager.NavigateTo("/subjects")) Text="Cancel" ButtonStyle="ButtonStyle.Light" class="ms-2" />
+            </div>
+        </div>
+    </EditForm>
+</RadzenCard>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private SubjectDto _subject = new SubjectDto();
+    private string Title => Id.HasValue ? "Edit Subject" : "Create Subject";
+
+    protected override void OnInitialized()
+    {
+        if (Id.HasValue)
+        {
+            _subject = SubjectService.GetById(Id.Value);
+            if (_subject == null)
+            {
+                NavigationManager.NavigateTo("/subjects");
+            }
+        }
+    }
+
+    private void HandleValidSubmit()
+    {
+        if (Id.HasValue)
+        {
+            SubjectService.Update(Id.Value, _subject);
+        }
+        else
+        {
+            var createDto = new CreateSubjectDto
+            {
+                Name = _subject.Name,
+                Description = _subject.Description
+            };
+            SubjectService.Create(createDto);
+        }
+        NavigationManager.NavigateTo("/subjects");
+    }
+}

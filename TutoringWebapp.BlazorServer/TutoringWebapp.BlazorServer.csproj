@@ -1,14 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Radzen.Blazor" Version="10.4.7" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TutoringWebapp.Application\TutoringWebapp.Application.csproj" />
+    <ProjectReference Include="..\TutoringWebapp.Domain\TutoringWebapp.Domain.csproj" />
+    <ProjectReference Include="..\TutoringWebapp.Infrastructure\TutoringWebapp.Infrastructure.csproj" />
+    <ProjectReference Include="..\TutoringWebapp.SharedKernel\TutoringWebapp.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>

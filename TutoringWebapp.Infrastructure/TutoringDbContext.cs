@@ -18,7 +18,7 @@ namespace TutoringWebapp.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=tutoring.db;Foreign Keys=True");
+            optionsBuilder.UseSqlite("Data Source=/Users/michalfilip/Desktop/IiE/II_stopien/II_semestr/Programowanie_aplikacji_biznesowych/Projekt/TutoringWebapp/tutoring.db;Foreign Keys=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

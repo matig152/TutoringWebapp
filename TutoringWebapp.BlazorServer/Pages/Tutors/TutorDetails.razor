@@ -1,0 +1,151 @@
+@page "/tutors/create"
+@page "/tutors/edit/{Id:guid}"
+@inject ITutorService TutorService
+@inject ISubjectService SubjectService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+
+<PageTitle>@Title</PageTitle>
+
+<div class="row mb-4">
+    <div class="col">
+        <h1>@Title</h1>
+    </div>
+</div>
+
+<RadzenCard>
+    <EditForm Model="@_tutor" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <RadzenLabel Text="First Name" />
+                <RadzenTextBox @bind-Value="_tutor.FirstName" class="w-100" Name="FirstName" />
+                <ValidationMessage For="@(() => _tutor.FirstName)" />
+            </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Last Name" />
+                <RadzenTextBox @bind-Value="_tutor.LastName" class="w-100" Name="LastName" />
+                <ValidationMessage For="@(() => _tutor.LastName)" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <RadzenLabel Text="Email" />
+                <RadzenTextBox @bind-Value="_tutor.Email" class="w-100" Name="Email" />
+                <ValidationMessage For="@(() => _tutor.Email)" />
+            </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Hourly Rate" />
+                <RadzenNumeric @bind-Value="_tutor.HourlyRate" class="w-100" Name="HourlyRate" />
+                <ValidationMessage For="@(() => _tutor.HourlyRate)" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <RadzenLabel Text="Image URL" />
+                <RadzenTextBox @bind-Value="_tutor.ImageUrl" class="w-100" Name="ImageUrl" />
+                <ValidationMessage For="@(() => _tutor.ImageUrl)" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <RadzenLabel Text="Bio" />
+                <RadzenTextArea @bind-Value="_tutor.Bio" class="w-100" Rows="3" Name="Bio" />
+                <ValidationMessage For="@(() => _tutor.Bio)" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <RadzenLabel Text="Taught Subjects (Click to select/deselect)" />
+                <div class="d-flex flex-wrap gap-2 p-2 border rounded">
+                    @foreach (var subject in _allSubjects)
+                    {
+                        var isSelected = _tutor.TaughtSubjects.Any(s => s.Id == subject.Id);
+                        <RadzenButton Click="@(() => ToggleSubject(subject))" 
+                                      ButtonStyle="@(isSelected ? ButtonStyle.Success : ButtonStyle.Light)"
+                                      Icon="@(isSelected ? "check_circle" : "add_circle")"
+                                      Text="@subject.Name"
+                                      Size="ButtonSize.Small" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-end">
+                <RadzenButton ButtonType="ButtonType.Submit" Text="Save" Icon="save" ButtonStyle="ButtonStyle.Primary" />
+                <RadzenButton Click=@(() => NavigationManager.NavigateTo("/tutors")) Text="Cancel" ButtonStyle="ButtonStyle.Light" class="ms-2" />
+            </div>
+        </div>
+    </EditForm>
+</RadzenCard>
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    private TutorDto _tutor = new TutorDto();
+    private List<SubjectDto> _allSubjects = new List<SubjectDto>();
+    private string Title => Id.HasValue ? "Edit Tutor" : "Create Tutor";
+
+    protected override void OnInitialized()
+    {
+        _allSubjects = SubjectService.GetAll();
+
+        if (Id.HasValue)
+        {
+            _tutor = TutorService.GetById(Id.Value);
+            if (_tutor == null)
+            {
+                NavigationManager.NavigateTo("/tutors");
+            }
+        }
+        else
+        {
+            _tutor.TaughtSubjects = new List<SubjectDto>();
+        }
+    }
+
+    private void ToggleSubject(SubjectDto subject)
+    {
+        var existing = _tutor.TaughtSubjects.FirstOrDefault(s => s.Id == subject.Id);
+        if (existing != null)
+        {
+            _tutor.TaughtSubjects.Remove(existing);
+        }
+        else
+        {
+            _tutor.TaughtSubjects.Add(subject);
+        }
+    }
+
+    private void HandleValidSubmit()
+    {
+        if (Id.HasValue)
+        {
+            TutorService.Update(Id.Value, _tutor);
+        }
+        else
+        {
+            var createDto = new CreateTutorDto
+            {
+                FirstName = _tutor.FirstName,
+                LastName = _tutor.LastName,
+                Email = _tutor.Email,
+                Bio = _tutor.Bio,
+                ImageUrl = _tutor.ImageUrl,
+                HourlyRate = _tutor.HourlyRate,
+                PasswordHash = "default_hash",
+                SubjectIds = _tutor.TaughtSubjects.Select(s => s.Id).ToList()
+            };
+            TutorService.Create(createDto);
+        }
+        NavigationManager.NavigateTo("/tutors");
+    }
+}

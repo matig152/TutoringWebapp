@@ -16,5 +16,8 @@ namespace TutoringWebapp.SharedKernel.Dto
         public string PasswordHash { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Bio { get; set; }
+        public string ImageUrl { get; set; }
+        public decimal HourlyRate { get; set; }
+        public List<SubjectDto> TaughtSubjects { get; set; } = new List<SubjectDto>();
     }
 }

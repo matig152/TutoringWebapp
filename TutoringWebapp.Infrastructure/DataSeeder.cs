@@ -25,30 +25,33 @@ namespace TutoringWebapp.Infrastructure
                     {
                         new Student()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "John",
                             LastName = "Doe",
                             Email = "example.john@example.com",
                             CreatedAt = DateTime.Now,
                             EducationLevel = EducationLevel.Elementary,
+                            ImageUrl = "https://i.pravatar.cc/300?img=1"
                         },
                         new Student()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Jan",
                             LastName = "Kowalski",
                             Email = "example.jan@example.com",
                             CreatedAt = DateTime.Now,
                             EducationLevel = EducationLevel.HighSchool,
+                            ImageUrl = "https://i.pravatar.cc/300?img=2"
                         },
                         new Student()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Alice",
                             LastName = "Smith",
                             Email = "alice.smith@example.com",
                             CreatedAt = DateTime.Now,
                             EducationLevel = EducationLevel.College,
+                            ImageUrl = "https://i.pravatar.cc/300?img=3"
                         },
                     };
                     _dbContext.Students.AddRange(students);
@@ -62,33 +65,39 @@ namespace TutoringWebapp.Infrastructure
                     {
                         new Tutor()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Maria",
                             LastName = "Garcia",
                             Email = "maria.garcia@example.com",
                             PasswordHash = "hashed_password_1",
                             CreatedAt = DateTime.Now,
                             Bio = "Experienced math and physics tutor with 5 years of experience",
+                            ImageUrl = "https://i.pravatar.cc/300?img=5",
+                            HourlyRate = 60.00m
                         },
                         new Tutor()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Peter",
                             LastName = "Johnson",
                             Email = "peter.johnson@example.com",
                             PasswordHash = "hashed_password_2",
                             CreatedAt = DateTime.Now,
                             Bio = "English language specialist, passionate about literature and writing",
+                            ImageUrl = "https://i.pravatar.cc/300?img=6",
+                            HourlyRate = 50.00m
                         },
                         new Tutor()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Emma",
                             LastName = "Wilson",
                             Email = "emma.wilson@example.com",
                             PasswordHash = "hashed_password_3",
                             CreatedAt = DateTime.Now,
                             Bio = "Chemistry expert with focus on exam preparation",
+                            ImageUrl = "https://i.pravatar.cc/300?img=7",
+                            HourlyRate = 55.00m
                         },
                     };
                     _dbContext.Tutors.AddRange(tutors);
@@ -102,21 +111,23 @@ namespace TutoringWebapp.Infrastructure
                     {
                         new Admin()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Robert",
                             LastName = "Brown",
                             Email = "robert.brown@example.com",
                             PasswordHash = "admin_hashed_password_1",
                             CreatedAt = DateTime.Now,
+                            ImageUrl = "https://i.pravatar.cc/300?img=8"
                         },
                         new Admin()
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             FirstName = "Sarah",
                             LastName = "Miller",
                             Email = "sarah.miller@example.com",
                             PasswordHash = "admin_hashed_password_2",
                             CreatedAt = DateTime.Now,
+                            ImageUrl = "https://i.pravatar.cc/300?img=9"
                         },
                     };
                     _dbContext.Admins.AddRange(admins);
@@ -171,7 +182,7 @@ namespace TutoringWebapp.Infrastructure
                         {
                             new Lesson()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 StudentId = students[0].Id,
                                 TutorId = tutors[0].Id,
                                 SubjectId = subjects[0].Id, // Mathematics
@@ -183,7 +194,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new Lesson()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 StudentId = students[1].Id,
                                 TutorId = tutors[1].Id,
                                 SubjectId = subjects[1].Id, // English
@@ -195,7 +206,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new Lesson()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 StudentId = students[2].Id,
                                 TutorId = tutors[2].Id,
                                 SubjectId = subjects[2].Id, // Chemistry
@@ -207,7 +218,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new Lesson()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 StudentId = students[0].Id,
                                 TutorId = tutors[1].Id,
                                 SubjectId = subjects[3].Id, // Physics
@@ -234,7 +245,7 @@ namespace TutoringWebapp.Infrastructure
                         {
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[0].Id,
                                 DayOfWeek = DayOfWeek.Monday,
                                 StartTime = new TimeOnly(9, 0),
@@ -242,7 +253,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[0].Id,
                                 DayOfWeek = DayOfWeek.Wednesday,
                                 StartTime = new TimeOnly(10, 0),
@@ -250,7 +261,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[1].Id,
                                 DayOfWeek = DayOfWeek.Tuesday,
                                 StartTime = new TimeOnly(14, 0),
@@ -258,7 +269,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[1].Id,
                                 DayOfWeek = DayOfWeek.Thursday,
                                 StartTime = new TimeOnly(14, 0),
@@ -266,7 +277,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[2].Id,
                                 DayOfWeek = DayOfWeek.Saturday,
                                 StartTime = new TimeOnly(10, 0),
@@ -274,7 +285,7 @@ namespace TutoringWebapp.Infrastructure
                             },
                             new TutorAvailability()
                             {
-                                Id = new Guid(),
+                                Id = Guid.NewGuid(),
                                 TutorId = tutors[2].Id,
                                 DayOfWeek = DayOfWeek.Sunday,
                                 StartTime = new TimeOnly(10, 0),

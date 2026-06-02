@@ -1,0 +1,48 @@
+@page "/subjects"
+@inject ISubjectService SubjectService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Subjects</PageTitle>
+
+<div class="row mb-4">
+    <div class="col-6">
+        <h1>Subjects</h1>
+    </div>
+    <div class="col-6 text-end">
+        <RadzenButton Click=@(() => NavigationManager.NavigateTo("/subjects/create")) Text="Add New Subject" Icon="add" ButtonStyle="ButtonStyle.Primary" />
+    </div>
+</div>
+
+<RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+    Data="@_subjects" TItem="SubjectDto" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
+    <Columns>
+        <RadzenDataGridColumn TItem="SubjectDto" Property="Name" Title="Name" Width="200px" />
+        <RadzenDataGridColumn TItem="SubjectDto" Property="Description" Title="Description" Width="400px" />
+        <RadzenDataGridColumn TItem="SubjectDto" Title="Actions" Width="160px" Context="subject">
+            <Template>
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Warning" Size="ButtonSize.Small" Click="@(() => NavigationManager.NavigateTo($"/subjects/edit/{subject.Id}"))" />
+                <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="@(() => DeleteSubject(subject))" class="ms-1" />
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+    private IEnumerable<SubjectDto> _subjects;
+
+    protected override void OnInitialized()
+    {
+        _subjects = SubjectService.GetAll();
+    }
+
+    private async Task DeleteSubject(SubjectDto subject)
+    {
+        var confirm = await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete {subject.Name}?");
+        if (confirm)
+        {
+            SubjectService.Delete(subject.Id);
+            _subjects = SubjectService.GetAll();
+        }
+    }
+}

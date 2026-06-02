@@ -11,5 +11,11 @@ namespace TutoringWebapp.Infrastructure.Repositories
 
         public TutorRepository(TutoringDbContext tutoringDbContext) : base(tutoringDbContext) => _tutoringDbContext = tutoringDbContext;
 
+        public override IList<Tutor> GetAll()
+        {
+            return _tutoringDbContext.Tutors
+                .Include(t => t.TaughtSubjects)
+                .ToList();
+        }
     }
 }

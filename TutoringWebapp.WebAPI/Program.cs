@@ -4,8 +4,18 @@ using TutoringWebapp.Application.Services;
 using TutoringWebapp.Domain.Contracts;
 using TutoringWebapp.Infrastructure.Repositories;
 using TutoringWebapp.Application.Mappings;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Serilog configuration
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("logs/api-log-.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.File("logs/api-error-.txt", rollingInterval: RollingInterval.Day, restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(TutoringWebappMappingProfile));
